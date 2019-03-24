@@ -1,0 +1,19 @@
+Team number 09
+Saranya Rajagopalan
+1213382467
+
+
+1. Makefile included will compile the source code for Galileo board. In order to compile it for host machine, use command "gcc assignment_01.c -pthread". Unfortunately, I could not figure out how to use environmental variables on time.
+2. The program prints the logs to the console, in order to print it to log file use "./assignment.o > logfile.txt"
+
+During execution,
+First enter the number of threads and the total time out for the program. 
+
+Then on each line enter <X A1 A2 A3 A4> where X is A/P depending upon whether the task is periodic or aperiodic. A1 is the priority of the task. A2 is the period for periodic task and event (0/1) for aperiodic task. A3 is the x_min and A4 is x_max for the busy loop iteration. 
+
+After entering the paramters for all the threads, enter 'x' to exit inputting. 
+
+Please change the MOUSEFILE MACRO in order to change the mouse file. 
+
+
+

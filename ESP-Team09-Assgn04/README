@@ -1,0 +1,52 @@
+Team 9:
+Saranya Rajagopalan
+1213382467
+
+On the host:
+Use "make" command to generate the object files. The Makefile cross compiles the device driver and the main program to the Galileo board.
+
+PART1: 
+Send "application1" binary to the board using 
+	sudo scp application root@device_ip:/application
+
+On the Galileo board,
+	run application1.
+
+Pin connections: 
+	1. Connect CLK, CS and DIN of MAX7219 to IO pins 13, 12, 11. 
+	2. Connect trigger pin of the HCSR04 to 5, and echo pin to 6. Other pins which support both edge interrupts can be used. The code is tested to be working for these pins on my setup
+	3. Run the application.
+
+The application has four display patterns: Two for forward movement of the dog and two for backward. If the obstacle is close by the dog runs faster and if it's far away the dog runs slower. Also if the obstacle moves farther away(meaning current distance is greater than previous distance) the display pattern forward is set and viceversa. 
+
+The cleanup method is called after the function execution and also upon Ctrl+C in order to unexport all the gpio pins used. 
+
+
+
+
+PART2:
+Insert both spidevice and spidriver modules using insmod on Galileo board. 
+They can be inserted in any order. 
+
+IOCTL function:
+	Has two commands. One to pass the number of display patterns(default 10) and other to actually pass all the patterns in kernel's user buffer
+
+WRITE function:
+	Receives a sequence of (pattern, duration) which is unpacked as struct with the same parameters on kernel side. The write function then calls a kernel thread in order to display the patterns in sequence-pausing for the mentioned duration. 
+
+The gpio pin multiplexing for spi device is done while opening the device through sysfs and the pins are freed while closing. 
+
+
+In order to test this kernel module, application2 can be used. All the test values in the test program are hard-coded. 
+
+
+NOTE: IF YOU WANT TO RMMOD AND INSMOD THE DRIVER/DEVICE KERNEL MODULE, PLEASE RESTART AS REMOVE METHOD IS NOT STABLE AT THE MOMENT.
+
+
+APPLICATION3:
+In case application2 is jittery due to incorrect distance reading, the spi device driver can be validated using this application. 
+
+
+
+
+

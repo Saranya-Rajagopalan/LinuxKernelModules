@@ -1,0 +1,70 @@
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Log
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Enter the number of tasks and the timeout in ms separated by space
+3 10000
+3 10000
+A 7 1 4234 4535
+A 10 0 423 34535
+A 30 0 4235 53453
+x
+Mouse handler thread started!
+Thread id 0: Aperiodic task waiting for activation! 
+Thread id 0: Priority 7 Aperiodic task Activated! 
+Thread id 0: Aperiodic task waiting for event 0!
+Thread id 1: Aperiodic task waiting for activation! 
+Thread id 1: Priority 10 Aperiodic task Activated! 
+Thread id 1: Aperiodic task waiting for event 1!
+Thread id 2: Aperiodic task waiting for activation! 
+Thread id 2: Priority 30 Aperiodic task Activated! 
+Thread id 2: Aperiodic task waiting for event 0!
+Thread id 0: Signal received, entering task body!
+Thread id 0: Task body start timestamp 19396.133140954
+Thread id 0: Task body end timestamp 19396.133193439
+Thread id 1: Signal received, entering task body!
+Thread id 1: Task body start timestamp 19397.45216579
+Thread id 2: Signal received, entering task body!
+Thread id 2: Task body start timestamp 19397.45254928
+Thread id 1: Task body end timestamp 19397.45428381
+Thread id 2: Task body end timestamp 19397.45602686
+Thread id 0: Signal received, entering task body!
+Thread id 0: Task body start timestamp 19397.893316375
+Thread id 0: Task body end timestamp 19397.893372322
+Thread id 1: Signal received, entering task body!
+Thread id 1: Task body start timestamp 19398.333149926
+Thread id 2: Signal received, entering task body!
+Thread id 2: Task body start timestamp 19398.333180249
+Thread id 1: Task body end timestamp 19398.333333574
+Thread id 2: Task body end timestamp 19398.333480343
+Thread id 0: Signal received, entering task body!
+Thread id 0: Task body start timestamp 19398.829353551
+Thread id 0: Task body end timestamp 19398.829407804
+Thread id 2: Signal received, entering task body!
+Thread id 2: Task body start timestamp 19399.101259498
+Thread id 1: Signal received, entering task body!
+Thread id 1: Task body start timestamp 19399.101299038
+Thread id 1: Task body end timestamp 19399.101491064
+Thread id 2: Task body end timestamp 19399.101569843
+Thread id 0: Signal received, entering task body!
+Thread id 0: Task body start timestamp 19399.413288108
+Thread id 0: Task body end timestamp 19399.413343750
+Thread id 2: Signal received, entering task body!
+Thread id 1: Signal received, entering task body!
+Thread id 1: Task body start timestamp 19399.733195227
+Thread id 2: Task body start timestamp 19399.733175448
+Thread id 1: Task body end timestamp 19399.733347682
+Thread id 2: Task body end timestamp 19399.733463744
+Thread id 0: Signal received, entering task body!
+Thread id 0: Task body start timestamp 19400.469248947
+Thread id 0: Task body end timestamp 19400.469298068
+TIME OUT!!!
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+Analysis of the log:
+
+For clarity only aperiodic tasks are chosen and it works the same for periodic tasks also. 
+
+In the example considered, even though thread 2 has the highest priority the threads are executed in the order in which they are created. This is true every time the signal for EVENT_0 is received. Both thread 1 and 2 are waiting on the same event but they are activated in the order in which they were created whenever right-click event occurs.
+
+Note: the part of code which sets priority does not work on Galileo. It works only on host machine. So kindly uncomment the code while executing on host. The logs were recorded only on Host machine. 
