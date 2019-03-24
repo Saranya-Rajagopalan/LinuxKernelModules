@@ -1,0 +1,35 @@
+/**************************************************************************
+Name	: Saranya Rajagopalan
+ASU ID	: 1213382467
+Team	: 09
+***************************************************************************/
+
+
+Galileo Board setup:
+1. Power the board and boot the Yocto Embedded linux from SD card
+2. Connect the board with the host computer via Ethernet and set the ipaddress of the ethernet port to 192.168.1.* and set the host ethernet address also to 192.168.1.*. 
+3. Set up screen
+4. Connect the USB mouse to the Intel Galileo Gen 2 board. By default IO pins 0,1,2 are configured as the Red, Green and Blue Led pins. So connect the R, G, B pins of the led to the corresponding IO pins. 
+
+
+Running the assignment code:
+1. Run the make file from the zip file. 
+2. It will generate the kernel module files and the compiled object file for the user test application
+3. Transfer the files "RGBLed.ko" and "test" to Galileo board. 
+4. Insert the module using "insmod ~/RGBLed.ko" command
+5. Run the test file using ./test
+6. Click mouse button to reset the cycle
+7. Press Ctrl+C to exit the test code
+8. Remove module using "rmmod RGBLed"
+
+
+Note: The first cycle of LED would not glow in regular intervals because they are still in setup phase.
+
+
+
+
+
+
+
+
+

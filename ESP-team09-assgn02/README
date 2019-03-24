@@ -1,0 +1,22 @@
+*********************************************************************************************
+TEAM 09
+SARANYA RAJAGOPALAN
+1213382467
+*********************************************************************************************
+
+1. Run the make file to cross-compile. 
+2. It will generate two independent applications RGBLed1 and RGBLed2. Transfer it to Galileo Gen2 board through serial connection
+3. On the board, run ./RGBLed1 50 0 1 2. The command line arguments are duty_cycle RedLed_pin GreenLed_pin and BlueLed_pin in order. Connect the Led's to the board. The command line arguments are the same for both the applications. 
+4. For the first application, a parallel thread is running to wait for mouse click events and reset the cycle. For the second application, a parallel thread is running for mouse click events but the left mouse click would increase the brightness of the led and the right mouse click would decrease the brightness. 
+
+
+
+In the last minute, I could not get the pwm code working- could not identify the mistake. So Including the third non-working file as well RGBLed_pwm.c. 
+
+NOTE: 
+
+The 'MOUSE' file is hardcoded in the file as MOUSEFILE. If the mouse file is not found, kindly change the mouse file name in the code. 
+
+/*
+FOR MY APPLICATION, I HAVE USED Gpio_func.c THAT IS ADOPTED FROM RIDGERUN's GPIO_INT_TEST. 
+*/
